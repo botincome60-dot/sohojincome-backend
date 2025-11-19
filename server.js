@@ -10,10 +10,16 @@ const app = express();
 connectDB();
 
 app.use(helmet());
+// Backend server.js-এ CORS update করুন
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: false
+  origin: [
+    'https://t.me/sohojincomebot',
+    'https://first-omega-dun.vercel.app/', 
+    'http://localhost',
+    '*'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
