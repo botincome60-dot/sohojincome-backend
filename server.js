@@ -10,16 +10,10 @@ const app = express();
 connectDB();
 
 app.use(helmet());
-// Backend server.js-এ CORS update করুন
 app.use(cors({
-  origin: [
-    'https://t.me/sohojincomebot',
-    'https://first-omega-dun.vercel.app/', 
-    'http://localhost',
-    '*'
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: false
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
@@ -86,7 +80,7 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`
   🚀 Sohoj Income Backend Server Started!
